@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-    productName:{
+    productName: {
         type: String,
         required: true
     },
@@ -10,18 +10,16 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     category: {
-        type: [
-            {
-                type: String,
-                enum: ['veg', 'non-veg'] 
-            }
-        ]
+        type: [{
+            type: String,
+            enum: ['veg', 'non-veg']
+        }]
     },
     image: {
         type: String
     },
     bestSeller: {
-        type: String
+        type: Boolean
     },
     description: {
         type: String
@@ -30,7 +28,7 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Firm'
     }]
-})
+});
 
 const Product = mongoose.model('Product', productSchema);
 

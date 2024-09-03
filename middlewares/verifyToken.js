@@ -1,12 +1,13 @@
 const Vendor = require('../models/Vendor');
 const jwt = require('jsonwebtoken');
-const dotEvn = require('dotenv');
+const dotEnv = require('dotenv');
 
-dotEvn.config()
+dotEnv.config()
 
 const secretKey = process.env.WhatIsYourName
 
-const verifyToken = async (req, res, next) => {
+
+const verifyToken = async(req, res, next) => {
     const token = req.headers.token;
 
     if (!token) {
@@ -24,9 +25,10 @@ const verifyToken = async (req, res, next) => {
 
         next()
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return res.status(500).json({ error: "Invalid token" });
     }
+
 }
 
 module.exports = verifyToken
